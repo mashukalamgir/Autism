@@ -1,15 +1,12 @@
 import cv2
 import warnings
-import warnings;warnings.filterwarnings("ignore")
-warnings.filterwarnings('ignore', category=DeprecationWarning)
-warnings.filterwarnings('ignore', category=FutureWarning)
 warnings.filterwarnings("ignore")
 
 def main():
 
 #%% Input Data
 
-    ImgName = "Dataset/training/Normal/Img_8.jpg"
+    ImgName = "Dataset\\validation\\Normal\\Img_15.jpg"
     img = cv2.imread(ImgName)
     resizeImg = cv2.resize(img, (225, 225))
 
@@ -33,7 +30,21 @@ def main():
     import Classifier
     Classifier.prediction(featFus[0], "Classifier")
 
+#%% Existing Classifiers
+    
+    import Existing
+    Existing.ResNetprediction(featFus[0], "ResNet")
+    
+    Existing.AlexNetprediction(featFus[0], "AlexNet")
+    
+    Existing.CNNprediction(featFus[0], "CNN")
+    
+    Existing.DNNprediction(featFus[0], "DNN")
 
+#%% Result
+    
+    import Result
+    Result.plot()
     
 if __name__ == '__main__':
     main()
